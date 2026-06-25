@@ -10,10 +10,10 @@ python -m venv .venv
 pip install --no-cache-dir -r requirements.txt
 ```
 
-2. Instalar los navegadores de Playwright:
+2. Instalar las dependencias y el controlador de navegador:
 
 ```powershell
-python -m playwright install chromium
+pip install --no-cache-dir -r requirements.txt
 ```
 
 ## Ejecutar la API localmente
@@ -46,6 +46,8 @@ pytest tests/system/test_sistema_e2e.py
 
 Asegúrate que el frontend esté disponible en `http://localhost:4200`.
 
+> Nota: este repositorio solo contiene el backend y los tests. La aplicación frontend de TicketFast no está incluida aquí, por lo que la prueba E2E solo podrá ejecutarse si cuentas con el frontend en otro proyecto y lo arrancas previamente en `localhost:4200`.
+
 ```powershell
 pytest tests/e2e/test_frontend_reservas_e2e.py
 ```
@@ -54,3 +56,8 @@ pytest tests/e2e/test_frontend_reservas_e2e.py
 
 - `docker-compose.test.yml` usa PostgreSQL en memoria RAM con `tmpfs`, por lo que los datos se descartan al detener los contenedores.
 - Si la API se ejecuta dentro de contenedores, el servicio de pruebas debe estar accesible en `localhost:8001`.
+- El archivo `requirements.txt` está ajustado para Windows/Python 3.12 con:
+  - `pytest==8.4.2`
+  - `psycopg2-binary==2.9.11`
+  - `selenium==4.15.0`
+  - `webdriver-manager==3.9.0`

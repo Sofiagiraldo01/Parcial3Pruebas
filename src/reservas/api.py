@@ -4,13 +4,18 @@ from src.database.config import get_db
 from src.database.repositorio import ReservasRepositorio
 from pydantic import BaseModel
 
-app = FastAPI()
+app = FastAPI(docs_url="/docs", redoc_url="/redoc", openapi_url="/openapi.json")
 
 
 class ReservaInput(BaseModel):
     cliente_email: str
     zona: str
     cantidad: int
+
+
+@app.get("/")
+def root():
+    return {"mensaje": "TicketFast API activa", "endpoints": ["/reservas/{evento_id}", "/reservas/{evento_id}/resumen"]}
 
 
 @app.post("/reservas/{evento_id}", status_code=201)
