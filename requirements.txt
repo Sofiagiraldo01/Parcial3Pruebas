@@ -1,5 +1,5 @@
 fastapi==0.104.0
-uvicorn==0.26.1
+uvicorn==0.49.0
 sqlalchemy==2.0.34
 psycopg2-binary==2.9.10
 pytest==8.4.3
